@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ATLAS - Dishub Bantaeng</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:650px;
+}
+
+.card{
+    background:white;
+    border-radius:25px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.logo i{
+    font-size:60px;
+    color:#2563eb;
+}
+
+.logo h1{
+    margin-top:10px;
+    color:#0f172a;
+}
+
+.logo p{
+    color:#64748b;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#1e293b;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #cbd5e1;
+    border-radius:12px;
+    font-size:15px;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
+textarea{
+    resize:none;
+    min-height:120px;
+}
+
+.btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}
+
+.footer{
+    margin-top:20px;
+    text-align:center;
+    color:#64748b;
+    font-size:13px;
+}
+
+.preview{
+    margin-top:10px;
+    text-align:center;
+}
+
+.preview img{
+    max-width:100%;
+    max-height:200px;
+    border-radius:12px;
+    display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<div class="logo">
+<i class="fas fa-road"></i>
+<h1>ATLAS</h1>
+<p>Akses Terpadu Pelaporan dan Monitoring Sarana Lalu Lintas</p>
+<p>Dinas Perhubungan Kabupaten Bantaeng</p>
+</div>
+
+<form id="reportForm">
+
+<div class="form-group">
+<label>Nama Pelapor</label>
+<input type="text" id="nama" required>
+</div>
+
+<div class="form-group">
+<label>Lokasi Kejadian</label>
+<input type="text" id="lokasi" required>
+</div>
+
+<div class="form-group">
+<label>Kategori</label>
+<select id="kategori" required>
+<option value="">Pilih Kategori</option>
+<option>Rambu Lalu Lintas</option>
+<option>Marka Jalan</option>
+<option>APILL</option>
+<option>PJU</option>
+<option>Guardrail</option>
+<option>Halte</option>
+<option>Lainnya</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Prioritas</label>
+<select id="prioritas" required>
+<option value="">Pilih Prioritas</option>
+<option>Rendah</option>
+<option>Sedang</option>
+<option>Tinggi</option>
+<option>Darurat</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Deskripsi Laporan</label>
+<textarea id="deskripsi" required></textarea>
+</div>
+
+<div class="form-group">
+<label>Upload Foto</label>
+<input type="file" id="foto" accept="image/*" required>
+<div class="preview">
+<img id="previewImage">
+</div>
+</div>
+
+<button type="submit" class="btn">
+<i class="fas fa-paper-plane"></i>
+Kirim Laporan
+</button>
+
+</form>
+
+<div class="footer">
+ATLAS © 2026 | Dinas Perhubungan Kabupaten Bantaeng
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+document.getElementById("foto").addEventListener("change",function(){
+
+const file=this.files[0];
+
+if(file){
+
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+const img=document.getElementById("previewImage");
+
+img.src=e.target.result;
+img.style.display="block";
+
+}
+
+reader.readAsDataURL(file);
+
+}
+
+});
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
